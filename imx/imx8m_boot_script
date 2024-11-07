@@ -1,0 +1,9 @@
+run loadfdt;
+run loadimage;
+if fatload mmc ${mmcdev}:${mmcpart} ${ramdisk_addr_r} ramdisk.img; then
+	booti ${loadaddr} ${ramdisk_addr_r} ${fdt_addr_r};
+else
+	echo "Booting on the persistent file system ..."
+	run loadimage;run mmcargs;
+	booti ${loadaddr} - ${fdt_addr_r};
+fi;
