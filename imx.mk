@@ -108,6 +108,8 @@ u-boot: u-boot-defconfig tfa ddr-firmware optee-os
 	# Copy DDR4 firmware
 	ln -sf $(FIRMWARE_PATH)/$(FIRMWARE_VERSION)/firmware/ddr/synopsys/lpddr4_pmu_train_*.bin \
 		$(UBOOT_PATH)/
+	ln -sf $(FIRMWARE_PATH)/$(FIRMWARE_VERSION)/firmware/hdmi/cadence/signed_hdmi_imx8m.bin \
+		$(UBOOT_PATH)/
 	$(U-BOOT_EXPORTS) $(MAKE) -C $(UBOOT_PATH) flash.bin
 
 .PHONY: u-boot-clean
